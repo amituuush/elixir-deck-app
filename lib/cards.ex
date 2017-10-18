@@ -1,6 +1,6 @@
 defmodule Cards do
   @moduledoc """
-  Documentation for Cards.
+    Provides methods for creating and handling a deck of cards
   """
 
   @doc """
@@ -45,14 +45,18 @@ defmodule Cards do
   def load(filename) do
     case File.read(filename) do
       {:ok, binary} -> :erlang.binary_to_term binary
-      {:error, reason} -> "That file does not exist"
+      {:error, _reason} -> "That file does not exist"
     end
   end
 
   def create_hand(hand_size) do
-    deck = Cards.create_deck
-    deck = Cards.shuffle(deck)
-    hand = Cards.deal(deck, hand_size)
+    # deck = Cards.create_deck
+    # deck = Cards.shuffle(deck)
+    # hand = Cards.deal(deck, hand_size)
+
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size)
   end
 
 end
